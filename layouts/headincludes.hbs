@@ -1,0 +1,20 @@
+{{!-- Add any script tags here that should be included in the <head> --}}
+<script>
+    function bindEvent(element, eventName, eventHandler) {
+        if (element.addEventListener) {
+            element.addEventListener(eventName, eventHandler, false);
+        } else if (element.attachEvent) {
+            element.attachEvent('on' + eventName, eventHandler);
+        }
+    }
+    // Listen to messages from parent window
+    bindEvent(window, 'message', function (e) {
+        try {
+            var obj = JSON.parse(e.data);
+            if (obj.action === "setQuery") {
+                ANSWERS.core.setQuery(obj.value)
+            }
+        } catch (e) {}
+        
+    });
+</script>

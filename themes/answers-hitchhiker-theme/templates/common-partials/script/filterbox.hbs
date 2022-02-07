@@ -1,0 +1,13 @@
+ANSWERS.addComponent("FilterBox", 
+{{#shallowMergeConfig}}[
+  {
+    "container": "#js-answersFilterBox"
+    {{#if verticalKey}}
+    ,
+    "verticalKey": "{{{verticalKey}}}"
+    {{/if}}
+  },
+  {{{json componentSettings.FilterBox}}}
+]
+{{/shallowMergeConfig}}
+);
